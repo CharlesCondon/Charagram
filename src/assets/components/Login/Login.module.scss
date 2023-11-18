@@ -59,6 +59,10 @@ input[type=text]:focus {
     border-radius: 9999px;
     border: 1px solid black;
     font-weight: bold;
+    height: 47px;
+    background-color: rgb(239, 239, 239);
+    color: black;
+    cursor: pointer;
     &:hover {
         filter: invert(10%);
     }
