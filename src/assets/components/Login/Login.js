@@ -10,7 +10,9 @@ function Login() {
             <input className={styles.input} type='text' name='username' placeholder='Username'></input>
             <label for='password'></label>
             <input className={styles.input} type='password' name='password' placeholder='Password'></input>
-            <input className={styles.submitBtn} type="submit" value="Log in"/>
+            <div className={styles.submitBtn}>
+                <input type="submit" value="Log in"/>
+            </div>
         </form>
         <div>
             <span>Don't have an account? <a href='./signup'>Sign up</a></span>
