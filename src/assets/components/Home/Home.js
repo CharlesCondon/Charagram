@@ -10,7 +10,7 @@ function Home() {
   return (
     <>
         <nav className={styles.topNav}> 
-            <img src={logo} alt='logo'/>
+            <a href='/'><img src={logo} alt='logo'/></a>
             <a href='/home'><img src={gear} alt='settings'/></a>
         </nav>
         <div className={styles.homeContainer}>
