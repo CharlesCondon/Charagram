@@ -1,4 +1,21 @@
-nav {
+.topNav {
+    position: fixed;
+    top:0;
+    width: 100%;
+    min-height: 3.5rem;
+    max-height: 16vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    img {
+        width: 30px;
+        margin: 0 10px;
+    }
+}
+
+.bottomNav {
     position: fixed;
     bottom:0;
     width: 100%;
@@ -10,9 +27,14 @@ nav {
     justify-content: space-evenly;
     border-top: 1px solid black;
     padding-top: 4px;
-    a {
-        img {
-            width: 30px;
-        }
+
+    img {
+        width: 30px;
+    }
+}
+
+a {
+    img:hover {
+    filter: invert(40%);
     }
 }
