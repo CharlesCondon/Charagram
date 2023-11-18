@@ -15,7 +15,9 @@ function Signup() {
             <input className={styles.input} type='text' name='username' placeholder='Username'></input>
             <label for='password'></label>
             <input className={styles.input} type='password' name='password' placeholder='Password'></input>
-            <input className={styles.submitBtn} type="submit" value="Sign Up"/>
+            <div className={styles.submitBtn}>
+                <input type="submit" value="Sign Up"/>
+            </div>
         </form>
         <div>
             <span>Have an account? <a href='./login'>Log In</a></span>
