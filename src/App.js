@@ -1,22 +1,23 @@
 import './App.css';
 import {Routes, Route} from 'react-router-dom';
-import Home from './assets/components/Home/Home';
+import Start from './assets/components/Start/Start';
 import Header from './assets/components/Header/Header';
 import Signup from './assets/components/Signup/Signup';
 import Footer from './assets/components/Footer/Footer';
 import Login from './assets/components/Login/Login';
 import NoPage from './assets/components/NoPage/NoPage';
+import Home from './assets/components/Home/Home';
 
 function App() {
 	return (
 		<div className="App">
 			<Routes>
-				<Route path='/' element={<Home/>} />
+				<Route path='/' element={<Start/>} />
 				<Route path='login' element={<Login/>} />
-				<Route path='Signup' element={<Signup/>} />
+				<Route path='signup' element={<Signup/>} />
+				<Route path='/home' element={<Home/>} />
 				<Route path='*' element={<NoPage/>} />
 			</Routes>
-			<Footer/> 
 		</div>
 	);
 }
