@@ -1,9 +1,18 @@
-footer {
+nav {
     position: fixed;
     bottom:0;
     width: 100%;
+    min-height: 3.5rem;
+    max-height: 16vh;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
+    border-top: 1px solid black;
+    padding-top: 4px;
+    a {
+        img {
+            width: 30px;
+        }
+    }
 }
