@@ -14,7 +14,7 @@ function Home() {
             <a href='/home'><img src={gear} alt='settings'/></a>
         </nav>
         <div className={styles.homeContainer}>
-
+            <h2>Under Construction :P</h2>
         </div>
         <nav className={styles.bottomNav} role='navigation'>
             <a href='/home'><img src={house} alt='home'/></a>
