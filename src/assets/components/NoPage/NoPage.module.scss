@@ -1,0 +1,17 @@
+@mixin lg {
+    @media (min-width: 600px) {
+        @content
+    }
+}
+
+.noPageContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    min-width: 300px;
+    @include lg {
+        min-width: 100%;
+    }
+}
