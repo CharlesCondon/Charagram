@@ -7,6 +7,7 @@
 .bottomNav {
     background-color: var(--bg-color);
     position: sticky;
+    position: -webkit-sticky;
     bottom: 0;
     width: 100%;
     min-height: 3.5rem;
