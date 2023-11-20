@@ -6,8 +6,11 @@
 
 .bottomNav {
     background-color: var(--bg-color);
-    position: sticky;
     position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -o-sticky;
+    position: -ms-sticky;
+    position: sticky;
     bottom: 0;
     width: 100%;
     min-height: 3.5rem;
