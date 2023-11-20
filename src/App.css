@@ -2,7 +2,7 @@
 	font-family: 'Raleway';
 	height: 100vh;
 	margin: 0;
-	
+	overflow: hidden;	
 }
 
 h1, h2 {

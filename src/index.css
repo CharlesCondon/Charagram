@@ -1,7 +1,6 @@
 :root {
   --bg-color: rgb(253, 249, 243);
   --fg-color: rgb(55, 117, 145);
-  overflow: hidden;
 }
 
 body {
