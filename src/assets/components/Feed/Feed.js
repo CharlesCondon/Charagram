@@ -1,25 +1,21 @@
 import React from 'react'
 import styles from './Feed.module.scss'
+import Post from '../Post/Post'
 
 function Feed() {
   return (
     <div className={styles.feedContainer}>
-        <h1>Feed</h1>
-        <h1>Feed</h1>
-        <h1>Feed</h1>
-        <h1>Feed</h1>
-        <h1>Feed</h1>
-        <h1>Feed</h1>
-        <h1>Feed</h1>
-        <h1>Feed</h1>
-        <h1>Feed</h1>
-        <h1>Feed</h1>
-        <h1>Feed</h1>
-        <h1>Feed</h1>
-        <h1>Feed</h1>
-        <h1>Feed</h1>
-        <h1>Feed</h1>
-        <h1>Feed</h1>
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
     </div>
   )
 }

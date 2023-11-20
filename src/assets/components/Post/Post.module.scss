@@ -1,0 +1,70 @@
+.postContainer {
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 1px solid black;
+    padding: 10px;
+    gap: 10px;
+}
+
+.postAvatar {
+    img {
+        width: 40px;
+    }
+}
+
+.postBody {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.postHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.postHeaderText {
+    h3 {
+        margin: 0;
+
+        span {
+            font-weight: 100;
+            margin-left: 5px;
+        }
+    }
+}
+    
+.postHeaderDescription {
+    p {
+        margin: 0;
+    }
+}
+
+.postFooter {
+    display: flex;
+    gap: 10px;
+}
+
+.postFooterBtn {
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 6px;
+    transition: all .25s ease-in-out;
+    &:hover {
+        background-color: rgba(55, 117, 145, .25);
+        img {
+            filter: invert(10%);
+        }
+    }
+    
+    img {
+        width: 20px;
+    }
+}
