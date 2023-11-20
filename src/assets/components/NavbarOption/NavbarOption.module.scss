@@ -1,0 +1,40 @@
+@mixin lg {
+    @media (min-width: 600px) {
+        @content
+    }
+}
+
+.navOptionContainer {
+    a {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        text-transform: capitalize;
+        text-decoration: none;
+        color: black;
+        transition: all .25s ease-in-out;
+
+        h2 {
+            display: none;
+        }
+        &:hover {
+            filter: invert(40%);
+        }
+    }
+    @include lg {
+        img {
+            width: 20px;
+        }
+        a {
+            font-size: 12px;
+            h2 {
+                display: block ;
+            }
+        }
+    }
+}
+
+.navOption--active {
+    filter: invert(50%);
+}

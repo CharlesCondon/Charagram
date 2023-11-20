@@ -70,11 +70,11 @@
 
 .signinBtn {
     background-color: rgba(250, 235, 210, .5);
-    color: black;
+    color: var(--fg-color);
     text-align: center;
     padding: 10px 0;
     margin-bottom: 10px;
-    border: 3px double black;
+    border: 3px double var(--fg-color);
     border-radius: 9999px;
     -webkit-border-radius: 9999px;
     -moz-border-radius: 9999px;
@@ -97,7 +97,7 @@
     div {
         width: 100%;
         height: 1px;
-        background-color: black;
+        background-color: var(--fg-color);
         margin-top: 4px;
     }
     span {

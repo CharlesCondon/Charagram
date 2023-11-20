@@ -46,11 +46,9 @@
     padding: 15px;
     margin-bottom: 10px;
     border-radius: 7px;
-    border: 1px solid black;
+    border: 1px solid var(--fg-color);
 }
-input[type=text]:focus {
-    box-shadow: inset 0 0 4px #000;
-}
+
 .submitBtn {
     width: 312px;
     height: 47px;
@@ -65,7 +63,7 @@ input[type=text]:focus {
     cursor: pointer;
     input {
         background-color: transparent;
-        color: black;
+        color: var(--fg-color);
         width: 100%;
         height: 100%;
         border: none;
