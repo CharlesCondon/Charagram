@@ -6,6 +6,20 @@ function Feed() {
     <div className={styles.feedContainer}>
         <h1>Feed</h1>
         <h1>Feed</h1>
+        <h1>Feed</h1>
+        <h1>Feed</h1>
+        <h1>Feed</h1>
+        <h1>Feed</h1>
+        <h1>Feed</h1>
+        <h1>Feed</h1>
+        <h1>Feed</h1>
+        <h1>Feed</h1>
+        <h1>Feed</h1>
+        <h1>Feed</h1>
+        <h1>Feed</h1>
+        <h1>Feed</h1>
+        <h1>Feed</h1>
+        <h1>Feed</h1>
     </div>
   )
 }
