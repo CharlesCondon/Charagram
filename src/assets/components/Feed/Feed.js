@@ -1,23 +1,36 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 import styles from './Feed.module.scss'
 import Post from '../Post/Post'
+import PostBox from '../PostBox/PostBox'
+import db from '../../../db/firebase'
+
 
 function Feed() {
-  return (
-    <div className={styles.feedContainer}>
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-    </div>
-  )
+
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        async function getPosts(db) {
+            const postCol = collection(db, 'posts');
+            const postSnap = await getDocs(postCol);
+            const postList = postSnap.docs.map(doc => doc.data());
+            setPosts(postList);
+        }
+        getPosts(db);
+    }, []);
+
+    return (
+        <div className={styles.feedContainer}>
+            <PostBox />
+            {posts.map((p) => {
+                let time = new Date(p.timestamp.seconds * 1000).getHours();
+                let current = new Date().getHours();
+
+                return <Post displayName={p.displayName} username={p.username} avatar={p.avatar} verified={p.verified} text={p.text} timestamp={current - time} />
+            })}
+        </div>
+    )
 }
 
 export default Feed

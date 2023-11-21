@@ -3,23 +3,28 @@ import styles from './Post.module.scss'
 import anon from '../../images/anon.png'
 import heart from '../../images/heart.png'
 import comment from '../../images/comment.png'
+import eye from '../../images/eye.webp'
 
-function Post({displayName, username, avatar, text}) {
+function Post({displayName, username, avatar, verified, timestamp, text}) {
+    let tempTime = timestamp;
+    if (timestamp < 1) {
+        tempTime = 1;
+    }
 
     return (
         <div className={styles.postContainer}>
             <div className={styles.postAvatar}>
-                <img src={anon} alt='avatar' />
+                {avatar ? <img src={avatar} alt='avatar' /> : <img src={anon} alt='avatar' />}
             </div>
             <div className={styles.postBody}>
                 <div className={styles.postHeader}>
                     <div className={styles.postHeaderText}>
                         <h3>
-                            Charles{" "} <span>@Charles</span><span>~ 4h</span>
+                            {displayName}{" "} {verified ? <img src={eye} alt='verified'/> : <></>} <span>@{username}</span><span> ~ {tempTime}h</span>
                         </h3>
                     </div>
                     <div className={styles.postHeaderDescription}>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultrices viverra felis et consectetur. Mauris finibus maximus elit quis dignissim. </p>
+                        <p>{text}</p>
                     </div>
                 </div>
                 <div className={styles.postFooter}>
