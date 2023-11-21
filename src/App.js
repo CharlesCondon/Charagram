@@ -1,5 +1,5 @@
 import './App.css';
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route, PrivateRoute} from 'react-router-dom';
 import Start from './assets/components/Start/Start';
 import Header from './assets/components/Header/Header';
 import Signup from './assets/components/Signup/Signup';
@@ -8,6 +8,7 @@ import Login from './assets/components/Login/Login';
 import NoPage from './assets/components/NoPage/NoPage';
 import Home from './assets/components/Home/Home';
 import PostPage from './assets/components/PostPage/PostPage';
+import AccountPage from './assets/components/AccountPage/AccountPage';
 
 function App() {
 	return (
@@ -18,6 +19,7 @@ function App() {
 				<Route path='signup' element={<Signup/>} />
 				<Route path='/home' element={<Home/>} />
 				<Route path='/post' element={<PostPage/>} />
+				<Route exact path="/:username" element={<AccountPage/>} />
 				<Route path='*' element={<NoPage/>} />
 			</Routes>
 		</div>

@@ -1,6 +1,7 @@
 import styles from './NavbarOption.module.scss'
 
 function NavbarOption({active, text, src}) {
+    
 
     return (
         <div className={`${styles.navOptionContainer} ${active && styles['navOption--active']}`}>
