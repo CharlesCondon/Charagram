@@ -4,8 +4,12 @@ import anon from '../../images/anon.png'
 import db from '../../../db/firebase'
 import { collection, addDoc } from "firebase/firestore/lite"; 
 
-function PostBox() {
+function PostBox({avi, dName, username, verified}) {
     const [text, setText] = useState("");
+    if (!avi) {
+        avi = anon
+    }
+    //console.log({dName})
 
     const sendPost = (e) => {
         e.preventDefault();
@@ -16,24 +20,28 @@ function PostBox() {
         try {
             async function docRef(db)  {
                 await addDoc(collection(db,"posts"), {
-                    avatar: "https://media.giphy.com/avatars/charlescon/EtvekJKzkGUC.JPG",
-                    displayName: "Charles",
-                    username: "char",
+                    avatar: avi,
+                    displayName: `${dName}`,
+                    username: `${username}`,
                     text: text,
                     timestamp: new Date(),
-                    verified: true
+                    verified: verified
                 })
             }
             docRef(db);
+            console.log('post made')
+            //window.location.reload(false);
+            setText("");
         } catch (e) {
             console.error("Error adding document: ", e);
         }
-        setText("");
+        
     }
 
     return (
         <div className={styles.postBoxContainer}>
-            <img src={anon} alt='avatar' />
+            
+            <img src={avi} alt='avatar' />
             <form className={styles.postBoxBody}>
                 <textarea placeholder="What's Happening?" type='text' maxLength="280" onChange={(e) => setText(e.target.value)} value={text}></textarea>
                 <div></div>

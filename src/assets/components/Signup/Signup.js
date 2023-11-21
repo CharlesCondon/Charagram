@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import styles from './Signup.module.scss'
 import Footer from '../Footer/Footer'
 import db from '../../../db/firebase'
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { collection, setDoc, doc, getDoc } from "firebase/firestore/lite"; 
 
 function Signup() {
@@ -90,8 +90,17 @@ function Signup() {
 										username: username,
 										email: email,
 										verified: false,
-										password: password
 									});
+
+									updateProfile(auth.currentUser, {
+										displayName: username										
+									}).then(() => {
+										console.log('new profile updated');
+									}).catch((error) => {
+										console.log('error updating new profile:');
+										console.log(error);
+									});
+
 									setEmail('');
 									setName('');
 									setUsername('');

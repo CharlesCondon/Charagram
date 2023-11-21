@@ -6,10 +6,6 @@ import comment from '../../images/comment.png'
 import eye from '../../images/eye.webp'
 
 function Post({displayName, username, avatar, verified, timestamp, text}) {
-    let tempTime = timestamp;
-    if (timestamp < 1) {
-        tempTime = 1;
-    }
 
     return (
         <div className={`${styles.postContainer} animate__animated animate__bounceInUp`}>
@@ -20,7 +16,7 @@ function Post({displayName, username, avatar, verified, timestamp, text}) {
                 <div className={styles.postHeader}>
                     <div className={styles.postHeaderText}>
                         <h3>
-                            {displayName}{" "} {verified ? <img src={eye} alt='verified'/> : <></>} <span>@{username}</span><span> ~ {tempTime}h</span>
+                            {displayName}{" "} {verified ? <img src={eye} alt='verified'/> : <></>} <span>@{username}</span><span> ~ {timestamp}</span>
                         </h3>
                     </div>
                     <div className={styles.postHeaderDescription}>
