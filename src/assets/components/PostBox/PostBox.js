@@ -9,6 +9,10 @@ function PostBox() {
 
     const sendPost = (e) => {
         e.preventDefault();
+        if (!text.replace(/\s/g, '').length) {
+            setText("")
+            return;
+        }
         try {
             async function docRef(db)  {
                 await addDoc(collection(db,"posts"), {

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import { collection, getDocs } from 'firebase/firestore/lite';
 import { getAuth, signInAnonymously } from "firebase/auth";
 import styles from './Feed.module.scss'
 import Post from '../Post/Post'
@@ -30,7 +30,7 @@ function Feed() {
                 console.log(errorMessage);
         });
         
-    }, []);
+    }, [auth]);
 
     return (
         <div className={styles.feedContainer}>
