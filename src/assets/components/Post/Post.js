@@ -12,7 +12,7 @@ function Post({displayName, username, avatar, verified, timestamp, text}) {
     }
 
     return (
-        <div className={styles.postContainer}>
+        <div className={`${styles.postContainer} animate__animated animate__bounceInUp`}>
             <div className={styles.postAvatar}>
                 {avatar ? <img src={avatar} alt='avatar' /> : <img src={anon} alt='avatar' />}
             </div>

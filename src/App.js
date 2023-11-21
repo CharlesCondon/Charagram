@@ -7,6 +7,7 @@ import Footer from './assets/components/Footer/Footer';
 import Login from './assets/components/Login/Login';
 import NoPage from './assets/components/NoPage/NoPage';
 import Home from './assets/components/Home/Home';
+import PostPage from './assets/components/PostPage/PostPage';
 
 function App() {
 	return (
@@ -16,6 +17,7 @@ function App() {
 				<Route path='login' element={<Login/>} />
 				<Route path='signup' element={<Signup/>} />
 				<Route path='/home' element={<Home/>} />
+				<Route path='/post' element={<PostPage/>} />
 				<Route path='*' element={<NoPage/>} />
 			</Routes>
 		</div>

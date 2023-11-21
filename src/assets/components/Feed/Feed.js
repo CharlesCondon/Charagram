@@ -38,7 +38,6 @@ function Feed() {
             {posts.map((p) => {
                 let time = new Date(p.timestamp.seconds * 1000).getHours();
                 let current = new Date().getHours();
-
                 return <Post displayName={p.displayName} username={p.username} avatar={p.avatar} verified={p.verified} text={p.text} timestamp={current - time} />
             })}
         </div>
