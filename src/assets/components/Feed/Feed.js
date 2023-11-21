@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { collection, getDocs } from 'firebase/firestore/lite';
-import { getAuth, signInAnonymously } from "firebase/auth";
+import { getAuth, signInAnonymously, onAuthStateChanged } from "firebase/auth";
 import styles from './Feed.module.scss'
 import Post from '../Post/Post'
 import PostBox from '../PostBox/PostBox'
@@ -13,22 +13,31 @@ function Feed() {
     
 
     useEffect(() => {
-        signInAnonymously(auth)
-            .then(() => {
-                async function getPosts(db) {
-                    const postCol = collection(db, 'posts');
-                    const postSnap = await getDocs(postCol);
-                    const postList = postSnap.docs.map(doc => doc.data());
-                    setPosts(postList);
-                }
-                getPosts(db);
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorCode);
-                console.log(errorMessage);
+        onAuthStateChanged(auth, (user) => {
+            if (!user.isAnonymous) {
+
+              const uid = user.uid;
+              console.log(user)
+            } else {
+                signInAnonymously(auth)
+                .then(() => {
+                    async function getPosts(db) {
+                        const postCol = collection(db, 'posts');
+                        const postSnap = await getDocs(postCol);
+                        const postList = postSnap.docs.map(doc => doc.data());
+                        setPosts(postList);
+                    }
+                    getPosts(db);
+                    console.log('user is a guest')
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.log(errorCode + "error: " + errorMessage);
+                });
+            }
         });
+        
         
     }, [auth]);
 

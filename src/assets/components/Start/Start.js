@@ -8,7 +8,7 @@ function Start() {
 
     useEffect(() => {
         let token = window.localStorage.getItem("token");
-        console.log(token);
+        //console.log(token);
         if(token !== "guest" && token !== null) {
             console.log('setting new token');
             setToken(true);
@@ -47,7 +47,7 @@ function Start() {
                         </div>
                     </div>
             
-                    <a className={styles.signinBtn} onClick={setGuest} href='/home?user=guest'>Continue as Guest</a>
+                    <a className={styles.signinBtn} onClick={setGuest} href='/home'>Continue as Guest</a>
                 </div>
             </div>
             <Footer/>
