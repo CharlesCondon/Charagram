@@ -11,11 +11,11 @@
     padding: 10px;
     gap: 10px;
     max-width: 598px;
-    margin: auto;
     @include lg {
         justify-content: center;
         border-left: 1px solid black;
         border-right: 1px solid black;
+        margin: auto;
     }
 }
 
@@ -23,7 +23,7 @@
     img {
         width: 40px;
         height: 40px;
-        border-radius: 50%;
+        border-radius: 100%;
         object-fit: cover;
     }
 }

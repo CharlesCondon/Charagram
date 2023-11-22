@@ -2,6 +2,10 @@ import styles from './NavbarOption.module.scss'
 
 function NavbarOption({active, text, src}) {
     
+    // let navLink = text;
+    // if (navLink !== 'guest') {
+    //     navLink = ''
+    // }
 
     return (
         <div className={`${styles.navOptionContainer} ${active && styles['navOption--active']}`}>

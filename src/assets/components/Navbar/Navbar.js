@@ -9,14 +9,15 @@ import { getAuth, signInAnonymously, onAuthStateChanged } from "firebase/auth";
 import db from '../../../db/firebase'
 
 function Navbar() {
-	let account;
+	let account = "";
  	const auth = getAuth();
 	const user = auth.currentUser;
 	if (user) {
-		console.log(user)
+		//console.log(user);
+		account = user.displayName;
 	} else {
-		account = "guest"
-		//console.log('anon')
+		account = "guest";
+		//console.log('anon');
 	}
 
 	return (
@@ -25,9 +26,6 @@ function Navbar() {
 			<NavbarOption src={bell} text="notifications"/>
 			<NavbarOption src={post} text="post"/>
 			<NavbarOption src={person} text={account}/>
-				{/* <a href='/home'><img src={house} alt='home'/></a>
-				<a href='/home'><img src={bell} alt='notifications'/></a>
-				<a href='/home'><img src={user} alt='user'/></a> */}
 		</nav>
 	)
 }
