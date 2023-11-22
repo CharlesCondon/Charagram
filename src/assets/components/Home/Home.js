@@ -27,7 +27,7 @@ function Home() {
         onAuthStateChanged(auth, (user) => {
             // user is a signed in
             if (user && !user.isAnonymous) {
-                const uid = user.uid;
+                //const uid = user.uid;
                 getPosts(db);
                 async function checkUser() {
                     const docRef = doc(db, "users", user.displayName);

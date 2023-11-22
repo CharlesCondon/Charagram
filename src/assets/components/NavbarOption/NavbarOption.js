@@ -1,18 +1,25 @@
+import { Link } from 'react-router-dom'
 import styles from './NavbarOption.module.scss'
 
-function NavbarOption({active, text, src}) {
+function NavbarOption({active, text, src, user}) {
     
-    // let navLink = text;
-    // if (navLink !== 'guest') {
-    //     navLink = ''
-    // }
+    if (text === "home") {
+        text = "../home";
+    }
+    else if (text !== "post" && text !== "notifications") {
+        text = "../user/" + text;
+    }
+    else {
+        text = "../home/" + text;
+    }
+    //console.log(user)
 
     return (
         <div className={`${styles.navOptionContainer} ${active && styles['navOption--active']}`}>
-            <a href={text}> 
-                <img src={src} alt={text} />
+            <Link to={text} >
+                <img src={src} alt={text}  />
                 <h2>{text}</h2>
-            </a>
+            </Link>
         </div>
     )
 }

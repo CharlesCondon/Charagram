@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react'
 import styles from './Start.module.scss'
 import Footer from '../Footer/Footer'
 import { Navigate } from 'react-router-dom'
+import { getAuth, signOut } from "firebase/auth";
 
 function Start() {
     const [token, setToken] = useState(false);
+    const [loggedOut, setLoggedOut] = useState(false);
 
     useEffect(() => {
         let token = window.localStorage.getItem("token");
@@ -15,9 +17,19 @@ function Start() {
         }
     }, []);
 
-    const setGuest = () => {
+    const setGuest = (e) => {
+        e.preventDefault();
+        const auth = getAuth();
+        console.log(auth)
+		signOut(auth).then(() => {
+			setLoggedOut(true);
+		}).catch((error) => {
+			alert("Oh no! An error occured with signout");
+			console.log(error);
+		});
         const guestToken = 'guest';
         window.localStorage.setItem("token", guestToken);
+        setToken(guestToken)
     }
 
     return (

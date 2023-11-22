@@ -1,11 +1,7 @@
-import React, {useState, useEffect} from 'react'
-import { collection, getDocs, doc, getDoc } from 'firebase/firestore/lite';
-import { getAuth, signInAnonymously, onAuthStateChanged } from "firebase/auth";
+import React from 'react'
 import styles from './Feed.module.scss'
 import Post from '../Post/Post'
 import PostBox from '../PostBox/PostBox'
-import db from '../../../db/firebase'
-
 
 function Feed({avatar, displayName, username, verified, posts}) {
 

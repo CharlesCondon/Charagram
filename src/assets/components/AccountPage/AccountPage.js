@@ -31,7 +31,7 @@ function AccountPage() {
         onAuthStateChanged(auth, (user) => {
             // user is a signed in
             if (user && !user.isAnonymous) {
-                const uid = user.uid;
+                //const uid = user.uid;
                 
                 async function checkUser() {
                     const docRef = doc(db, "users", user.displayName);

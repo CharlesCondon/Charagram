@@ -23,7 +23,7 @@ function Navbar() {
 			<NavbarOption active src={house} text="home"/>
 			<NavbarOption src={bell} text="notifications"/>
 			<NavbarOption src={post} text="post"/>
-			<NavbarOption src={person} text={account}/>
+			<NavbarOption src={person} text={account} user={user}/>
 		</nav>
 	)
 }
