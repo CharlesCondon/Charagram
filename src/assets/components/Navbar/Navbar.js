@@ -12,7 +12,7 @@ function Navbar() {
  	const auth = getAuth();
 	const user = auth.currentUser;
 	if (user && user.isAnonymous !== true) {
-		console.log(user)
+		//console.log(user)
 		account = user.displayName;
 	} else {
 		account = "guest";

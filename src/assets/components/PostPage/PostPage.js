@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {Navigate, useLocation} from 'react-router-dom'
+import {Navigate} from 'react-router-dom'
 import styles from './PostPage.module.scss'
 import db from '../../../db/firebase'
 import { collection, addDoc, doc, getDoc } from "firebase/firestore/lite"

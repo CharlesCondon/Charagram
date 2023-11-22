@@ -30,15 +30,16 @@ function Feed({avatar, displayName, username, verified, posts}) {
             return str;
         }
     }
+    //console.log(posts)
 
     return (
         <div className={styles.feedContainer}>
             <PostBox avi={avatar} dName={displayName} username={username} verified={verified}/>
             {posts.map((p) => {
-                let day = new Date(p.timestamp.seconds * 1000);
+                let day = new Date(p[0].timestamp.seconds * 1000);
                 let currentDay = new Date();
                 let postTime = calcDate(day, currentDay);
-                return <Post displayName={p.displayName} username={p.username} avatar={p.avatar} verified={p.verified} text={p.text} timestamp={postTime} />
+                return <Post id={p[1]} displayName={p[0].displayName} username={p[0].username} avatar={p[0].avatar} verified={p[0].verified} text={p[0].text} timestamp={postTime} likes={p[0].likes} />
             })}
         </div>
     )

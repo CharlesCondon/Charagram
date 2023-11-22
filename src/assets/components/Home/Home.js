@@ -18,8 +18,8 @@ function Home() {
 	async function getPosts(db) {
         const postCol = collection(db, 'posts');
         const postSnap = await getDocs(postCol);
-        const postList = postSnap.docs.map(doc => doc.data());
-        postList.sort((a,b) => b.timestamp.seconds - a.timestamp.seconds)
+        const postList = postSnap.docs.map(doc => [doc.data(), doc.id]);
+        postList.sort((a,b) => b[0].timestamp.seconds - a[0].timestamp.seconds)
         setPosts(postList);
     }
 
@@ -50,7 +50,7 @@ function Home() {
                     setCurrentDName("Guest");
                     setCurrentUserN("guest");
                     setCurrentVerified(false);
-                    console.log('user is a guest')
+                    //console.log('user is a guest')
                 })
                 .catch((error) => {
                     const errorCode = error.code;
