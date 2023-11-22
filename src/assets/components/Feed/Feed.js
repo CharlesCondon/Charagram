@@ -15,19 +15,19 @@ function Feed() {
     const [currentVerified, setCurrentVerified] = useState(false);
     const auth = getAuth();
     
+    async function getPosts(db) {
+        const postCol = collection(db, 'posts');
+        const postSnap = await getDocs(postCol);
+        const postList = postSnap.docs.map(doc => doc.data());
+        postList.sort((a,b) => b.timestamp.seconds - a.timestamp.seconds)
+        setPosts(postList);
+    }
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
-            if (!user.isAnonymous) {
-                //console.log(user)
+            // user is a signed in
+            if (user && !user.isAnonymous) {
                 const uid = user.uid;
-                async function getPosts(db) {
-                    const postCol = collection(db, 'posts');
-                    const postSnap = await getDocs(postCol);
-                    const postList = postSnap.docs.map(doc => doc.data());
-                    postList.sort((a,b) => b.timestamp.seconds - a.timestamp.seconds)
-                    setPosts(postList);
-                }
                 getPosts(db);
 
                 async function checkUser() {
@@ -35,7 +35,6 @@ function Feed() {
                     const docSnap = await getDoc(docRef);
                     if (docSnap.exists()) {
                         let current = (docSnap.data());
-                        //console.log(current.displayName)
                         setCurrentAvi(current.avatar);
                         setCurrentDName(current.displayName);
                         setCurrentUserN(current.username);
@@ -44,17 +43,14 @@ function Feed() {
                 }
                 checkUser();
             } else {
+                // user is a guest
                 signInAnonymously(auth)
                 .then(() => {
-                    async function getPosts(db) {
-                        const postCol = collection(db, 'posts');
-                        const postSnap = await getDocs(postCol);
-                        const postList = postSnap.docs.map(doc => doc.data());
-                        postList.sort((a,b) => b.timestamp.seconds - a.timestamp.seconds)
-                        setPosts(postList);
-                        
-                    }
                     getPosts(db);
+                    setCurrentAvi("");
+                    setCurrentDName("Guest");
+                    setCurrentUserN("guest");
+                    setCurrentVerified(false);
                     console.log('user is a guest')
                 })
                 .catch((error) => {
@@ -83,13 +79,12 @@ function Feed() {
         else {
             let t1 = original.getHours();
             let t2 = current.getHours();
-            let str = ""
+            let str = "";
             if (t2-t1 === 0) {
-                str = "1h"
+                str = "1h";
             }
             else {
-                str = (t2-t1) + "h"
-                
+                str = (t2-t1) + "h";
             }
             return str;
         }
