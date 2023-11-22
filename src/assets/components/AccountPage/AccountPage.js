@@ -14,6 +14,7 @@ function AccountPage() {
     const [avi, setAvi] = useState("");
     const [displayName, setDisplay] = useState("");
     const [username, setUsername] = useState("");
+    const [bio, setBio] = useState("");
     const [verified, setVerified] = useState(false);
     const [guest, setGuest] = useState(false);
     const auth = getAuth();
@@ -44,6 +45,7 @@ function AccountPage() {
                         else {
                             setAvi(current.avatar);
                         }
+                        setBio(current.bio);
                         setDisplay(current.displayName);
                         setVerified(current.verified);
                         setUsername(current.username);
@@ -56,7 +58,7 @@ function AccountPage() {
                 // user is a guest
                 signInAnonymously(auth)
                 .then(() => {
-                    
+                    setBio('coward');
                     setAvi(anon);
                     setDisplay("Guest");
                     setVerified(false);
@@ -115,7 +117,7 @@ function AccountPage() {
             </div>
             <div className={styles.accountPageBody}>
                 <h1>{displayName} {verified ? <span><img src={logo} alt='verified'/></span> : <></>} </h1>
-                <p>Test descriptionasdf ;alk sj ;aj ;asdf asd asd asdf asdfea df aef adsjf ;adksjf; aldsaj;sl ja;sdk lja;s j;alksdjf; lj</p>
+                <p>{bio}</p>
             </div>
             <div className={styles.accountPagePosts}>
                 <h2>Posts</h2>
