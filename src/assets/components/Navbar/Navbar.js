@@ -5,19 +5,17 @@ import bell from '../../images/bell.png'
 import person from '../../images/user.png'
 import post from '../../images/addition.png'
 import NavbarOption from '../NavbarOption/NavbarOption'
-import { getAuth, signInAnonymously, onAuthStateChanged } from "firebase/auth";
-import db from '../../../db/firebase'
+import { getAuth } from "firebase/auth";
 
 function Navbar() {
 	let account = "";
  	const auth = getAuth();
 	const user = auth.currentUser;
-	if (user) {
-		//console.log(user);
+	if (user && user.isAnonymous !== true) {
+		console.log(user)
 		account = user.displayName;
 	} else {
 		account = "guest";
-		//console.log('anon');
 	}
 
 	return (

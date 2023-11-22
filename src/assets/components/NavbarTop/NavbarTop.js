@@ -34,7 +34,7 @@ function NavbarTop() {
 		});
 	}
     return (
-        <div>			
+        <>		
             <nav className={styles.topNav}> 
                 <a href='/'><img src={logo} alt='logo'/></a>
                 <img onClick={showSettings} className={styles.settingsBtn} src={gear} alt='settings'/>
@@ -51,7 +51,7 @@ function NavbarTop() {
                 </div> 
                 : <></>}
             {loggedOut ? <Navigate to="/" replace={true}/>: <></>}
-        </div>
+		</>	
     )
 }
 

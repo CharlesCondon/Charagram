@@ -7,62 +7,7 @@ import PostBox from '../PostBox/PostBox'
 import db from '../../../db/firebase'
 
 
-function Feed() {
-    const [posts, setPosts] = useState([]);
-    const [currentAvi, setCurrentAvi] = useState("");
-    const [currentDName, setCurrentDName] = useState("");
-    const [currentUserN, setCurrentUserN] = useState("");
-    const [currentVerified, setCurrentVerified] = useState(false);
-    const auth = getAuth();
-    
-    async function getPosts(db) {
-        const postCol = collection(db, 'posts');
-        const postSnap = await getDocs(postCol);
-        const postList = postSnap.docs.map(doc => doc.data());
-        postList.sort((a,b) => b.timestamp.seconds - a.timestamp.seconds)
-        setPosts(postList);
-    }
-
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            // user is a signed in
-            if (user && !user.isAnonymous) {
-                const uid = user.uid;
-                getPosts(db);
-
-                async function checkUser() {
-                    const docRef = doc(db, "users", user.displayName);
-                    const docSnap = await getDoc(docRef);
-                    if (docSnap.exists()) {
-                        let current = (docSnap.data());
-                        setCurrentAvi(current.avatar);
-                        setCurrentDName(current.displayName);
-                        setCurrentUserN(current.username);
-                        setCurrentVerified(current.verified);
-                    }
-                }
-                checkUser();
-            } else {
-                // user is a guest
-                signInAnonymously(auth)
-                .then(() => {
-                    getPosts(db);
-                    setCurrentAvi("");
-                    setCurrentDName("Guest");
-                    setCurrentUserN("guest");
-                    setCurrentVerified(false);
-                    console.log('user is a guest')
-                })
-                .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    console.log(errorCode + "error: " + errorMessage);
-                });
-            }
-        });
-        
-        
-    }, [auth]);
+function Feed({avatar, displayName, username, verified, posts}) {
 
     function calcDate(original, current) {
         const months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"]
@@ -92,7 +37,7 @@ function Feed() {
 
     return (
         <div className={styles.feedContainer}>
-            <PostBox avi={currentAvi} dName={currentDName} username={currentUserN} verified={currentVerified}/>
+            <PostBox avi={avatar} dName={displayName} username={username} verified={verified}/>
             {posts.map((p) => {
                 let day = new Date(p.timestamp.seconds * 1000);
                 let currentDay = new Date();

@@ -4,7 +4,7 @@ import Navbar from '../Navbar/Navbar'
 import anon from '../../images/anon.png';
 import logo from '../../images/eye.webp';
 import NavbarTop from '../NavbarTop/NavbarTop';
-import { collection, getDocs, doc, getDoc } from 'firebase/firestore/lite';
+import { collection, getDocs, doc, getDoc, query, where } from 'firebase/firestore/lite';
 import { getAuth, onAuthStateChanged, signInAnonymously } from "firebase/auth";
 import db from '../../../db/firebase'
 import Post from '../Post/Post'
@@ -18,8 +18,9 @@ function AccountPage() {
     const [guest, setGuest] = useState(false);
     const auth = getAuth();
 
-    async function getPosts(db) {
-        const postCol = collection(db, 'posts');
+
+    async function getPosts(db, user) {
+        const postCol = query(collection(db, 'posts'), where("username", "==", user));
         const postSnap = await getDocs(postCol);
         const postList = postSnap.docs.map(doc => doc.data());
         postList.sort((a,b) => b.timestamp.seconds - a.timestamp.seconds)
@@ -31,21 +32,23 @@ function AccountPage() {
             // user is a signed in
             if (user && !user.isAnonymous) {
                 const uid = user.uid;
-                getPosts(db);
+                
                 async function checkUser() {
                     const docRef = doc(db, "users", user.displayName);
                     const docSnap = await getDoc(docRef);
                     if (docSnap.exists()) {
                         let current = (docSnap.data());
                         if (current.avatar === "") {
-                            setAvi(anon)
+                            setAvi(anon);
                         }
                         else {
                             setAvi(current.avatar);
                         }
                         setDisplay(current.displayName);
-                        setUsername(current.username);
                         setVerified(current.verified);
+                        setUsername(current.username);
+                        getPosts(db, current.username);
+                        
                     }
                 }
                 checkUser();
@@ -53,12 +56,14 @@ function AccountPage() {
                 // user is a guest
                 signInAnonymously(auth)
                 .then(() => {
-                    getPosts(db);
+                    
                     setAvi(anon);
                     setDisplay("Guest");
-                    setUsername("guest");
                     setVerified(false);
                     setGuest(true);
+                    setUsername("guest");
+                    getPosts(db, "guest");
+                    
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -118,11 +123,7 @@ function AccountPage() {
                     let day = new Date(p.timestamp.seconds * 1000);
                     let currentDay = new Date();
                     let postTime = calcDate(day, currentDay);
-                    if (p.username === username) {
-                        return <Post displayName={p.displayName} username={p.username} avatar={p.avatar} verified={p.verified} text={p.text} timestamp={postTime} />
-                    } else {
-                        return <></>
-                    }
+                    return <Post displayName={p.displayName} username={p.username} avatar={p.avatar} verified={p.verified} text={p.text} timestamp={postTime} />
                 })}
             </div>
             <Navbar/>

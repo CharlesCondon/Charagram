@@ -19,7 +19,7 @@ function App() {
 				<Route path='signup' element={<Signup/>} />
 				<Route path='/home' element={<Home/>} />
 				<Route path='/post' element={<PostPage/>} />
-				<Route exact path="/:username" element={<AccountPage/>} />
+				{/* <Route exact path="/:username" element={<AccountPage/>} /> */}
 				<Route path='*' element={<NoPage/>} />
 			</Routes>
 		</div>

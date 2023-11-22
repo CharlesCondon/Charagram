@@ -1,4 +1,16 @@
+@mixin lg {
+    @media (min-width: 600px) {
+        @content
+    }
+}
+
 .feedContainer {
     flex: 1 1 auto;
     position: sticky;
+
+    @include lg {
+        width: 600px;
+        margin: auto;
+        
+    }
 }

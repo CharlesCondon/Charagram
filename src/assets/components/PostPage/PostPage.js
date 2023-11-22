@@ -4,10 +4,22 @@ import styles from './PostPage.module.scss'
 import db from '../../../db/firebase'
 import { collection, addDoc } from "firebase/firestore/lite"
 import back from '../../images/back.png'
+import { getAuth, signInAnonymously, onAuthStateChanged } from "firebase/auth";
 
 function PostPage() {
     const [text, setText] = useState("");
     const [postSuccess, setPostSuccess] = useState(false)
+
+    let account = "";
+    const auth = getAuth();
+    const user = auth.currentUser;
+    if (user) {
+        console.log(user);
+        account = user.displayName;
+    } else {
+        account = "guest";
+        console.log('anon');
+    }
 
     const sendPost = (e) => {
         e.preventDefault();

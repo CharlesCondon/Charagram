@@ -12,10 +12,8 @@
     gap: 10px;
     max-width: 598px;
     @include lg {
-        justify-content: center;
         border-left: 1px solid black;
         border-right: 1px solid black;
-        margin: auto;
     }
 }
 
