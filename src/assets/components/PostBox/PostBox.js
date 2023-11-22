@@ -9,7 +9,17 @@ function PostBox({avi, dName, username, verified}) {
     if (!avi) {
         avi = anon
     }
-    //console.log({dName})
+    
+    function handleText(str) {
+        if (!str.toLowerCase().includes("charles")) {
+            alert('Oh No! looks like you\'re not posting something about Charles. Try again with Charles in mind.')
+            return false
+        }
+        else {
+            return true;
+        }
+        
+    }
 
     const sendPost = (e) => {
         e.preventDefault();
@@ -17,25 +27,30 @@ function PostBox({avi, dName, username, verified}) {
             setText("")
             return;
         }
-        try {
-            async function docRef(db)  {
-                await addDoc(collection(db,"posts"), {
-                    avatar: avi,
-                    displayName: `${dName}`,
-                    username: `${username}`,
-                    text: text,
-                    timestamp: new Date(),
-                    verified: verified
-                })
-            }
-            docRef(db);
-            console.log('post made')
-            //window.location.reload(false);
+        if (!handleText(text)) {
             setText("");
-        } catch (e) {
-            console.error("Error adding document: ", e);
+            return;
         }
-        
+        else {
+            try {
+                async function docRef(db)  {
+                    await addDoc(collection(db,"posts"), {
+                        avatar: avi,
+                        displayName: `${dName}`,
+                        username: `${username}`,
+                        text: text,
+                        timestamp: new Date(),
+                        verified: verified
+                    })
+                }
+                docRef(db);
+                console.log('post made')
+                //window.location.reload(false);
+                setText("");
+            } catch (e) {
+                console.error("Error adding document: ", e);
+            }
+        }
     }
 
     return (

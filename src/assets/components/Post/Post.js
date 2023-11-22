@@ -1,27 +1,27 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import styles from './Post.module.scss'
 import anon from '../../images/anon.png'
 import heart from '../../images/heart.png'
 import comment from '../../images/comment.png'
 import eye from '../../images/eye.webp'
 import { doc, updateDoc, increment } from "firebase/firestore/lite";
-import { getAuth } from "firebase/auth";
+// import { getAuth } from "firebase/auth";
 import db from '../../../db/firebase'
 
 function Post({displayName, username, avatar, verified, timestamp, text, id, likes}) {
-    const [isAnon, setIsAnon] = useState(false);
+    //const [isAnon, setIsAnon] = useState(false);
 
     const handleComment = (e) => {
         alert("~ feature coming soon ~")
     }
 
     const handleLike = (e) => {
-        if (isAnon) {
-            alert("Sorry, only signed-in users can like posts");
-        } else {
+        //if (isAnon) {
+            //alert("Sorry, only signed-in users can like posts");
+        //} else {
             let postId = e.target.parentElement.dataset.id
             updateLikes(db, postId);
-        }
+        //}
         
     }
 

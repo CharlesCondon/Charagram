@@ -6,6 +6,7 @@ import { getAuth, signOut } from "firebase/auth";
 
 function Start() {
     const [token, setToken] = useState(false);
+    // eslint-disable-next-line no-unused-vars
     const [loggedOut, setLoggedOut] = useState(false);
 
     useEffect(() => {
