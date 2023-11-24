@@ -10,7 +10,7 @@ function Footer() {
             <a href='./help'>Help</a>
         </div>
         <div>
-            <span>@ 2023 Charagram by Charles</span>
+            <span>@ 2023 Chatter by Charles</span>
         </div>
     </div>
   )
