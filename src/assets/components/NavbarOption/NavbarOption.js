@@ -14,8 +14,20 @@ function NavbarOption({active, text, src, user}) {
     }
     //console.log(user)
 
+    // const navBtns = document.querySelectorAll('.navBtn');
+    //     navBtns.forEach((btn) => {
+    //         btn.addEventListener("click", (e) => {
+    //             navBtns.forEach((f) => f.classList.remove('navOption--active'));
+    //             e.target.classList.toggle('navOption--active')
+    //         })
+    // })
+
+    // const toggleActive = (e) => {
+        
+    // }
+
     return (
-        <div className={`${styles.navOptionContainer} ${active && styles['navOption--active']}`}>
+        <div className={`${styles.navOptionContainer} navBtn`}>
             <Link to={url} >
                 <img src={src} alt={text}  />
                 <h2>{text}</h2>

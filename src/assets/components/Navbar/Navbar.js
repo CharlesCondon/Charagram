@@ -20,7 +20,7 @@ function Navbar() {
 
 	return (
 		<nav className={styles.bottomNav} role='navigation'>
-			<NavbarOption active src={house} text="home"/>
+			<NavbarOption src={house} text="home"/>
 			<NavbarOption src={bell} text="notifications"/>
 			<NavbarOption src={post} text="post"/>
 			<NavbarOption src={person} text={account} user={user}/>

@@ -9,6 +9,7 @@ import NoPage from './assets/components/NoPage/NoPage';
 import Home from './assets/components/Home/Home';
 import PostPage from './assets/components/PostPage/PostPage';
 import AccountPage from './assets/components/AccountPage/AccountPage';
+import NotificationsPage from './assets/components/NotificationsPage/NotificationsPage';
 
 function App() {
 	return (
@@ -19,6 +20,7 @@ function App() {
 				<Route path='signup' element={<Signup/>} />
 				<Route path='/home' element={<Home/>} />
 				<Route path='/home/post' element={<PostPage/>} />
+				<Route path='/home/notifications' element={<NotificationsPage/>} />
 				<Route exact path="/user/:username" element={<AccountPage/>} />
 				<Route path='*' element={<NoPage/>} />
 			</Routes>

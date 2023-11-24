@@ -19,7 +19,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    border-top: 1px solid black;
+    border-top: 1px solid var(--border-color);
     padding-top: 4px;
     z-index: 10;
     img {

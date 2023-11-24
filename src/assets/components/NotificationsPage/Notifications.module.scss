@@ -1,0 +1,16 @@
+.navPageContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.navPageBody {
+    flex: 1 1 auto;
+    h1 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+}
