@@ -135,7 +135,7 @@ function Signup() {
 			<div className={styles.signupContainer}>
 					<img src='./eye.webp' alt='logo'/>
 					<h2>Sign up to start sharing positivity with your friends.</h2>
-					<form>
+					<form id='signup'>
 						<label for='email'></label>
 						<input id='email' onChange={(e) => setEmail(e.target.value)} value={email} className={styles.input} type='email' name='email' placeholder='Email'></input>
 						<label for='name'></label>

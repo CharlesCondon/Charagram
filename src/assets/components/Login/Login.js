@@ -33,7 +33,7 @@ function Login() {
 			<div className={styles.signupContainer}>
 				<img src='./eye.webp' alt='logo'/>
 				<h1>Charagram</h1>
-				<form action=''>
+				<form action='' id='login'>
 					<label for='email'></label>
 					<input onChange={(e) => setEmail(e.target.value)} value={email} className={styles.input} type='email' name='email' placeholder='Email'></input>
 					<label for='password'></label>

@@ -57,7 +57,7 @@ function PostBox({avi, dName, username, verified}) {
         <div className={styles.postBoxContainer}>
             
             <img src={avi} alt='avatar' />
-            <form className={styles.postBoxBody}>
+            <form className={styles.postBoxBody} id='post'>
                 <textarea placeholder="What's Happening?" type='text' maxLength="280" onChange={(e) => setText(e.target.value)} value={text}></textarea>
                 <div></div>
                 <input onClick={sendPost} type='submit' value="Post"></input>

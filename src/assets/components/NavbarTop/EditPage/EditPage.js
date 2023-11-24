@@ -34,7 +34,7 @@ function EditPage({username, displayName, bio, avatar}) {
 
     return (
         <div className={`${styles.editPageContainer} animate__animated animate__fadeInDown`}>
-            <form className={styles.editForm}>
+            <form className={styles.editForm} id='edit_user'>
                 <div className={styles.editInput}>
                     <label for='avatar'>Avatar:</label>
                     <input id='avatar' onChange={(e) => setAvatar(e.target.value)} value={avi} className={styles.input} type='text' name='name' placeholder='This must be an image url for now'></input>
