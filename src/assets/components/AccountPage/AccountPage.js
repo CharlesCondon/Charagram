@@ -8,6 +8,7 @@ import { collection, getDocs, doc, getDoc, query, where } from 'firebase/firesto
 import { getAuth, onAuthStateChanged, signInAnonymously } from "firebase/auth";
 import db from '../../../db/firebase'
 import Post from '../Post/Post'
+import EditPage from '../NavbarTop/EditPage/EditPage';
 
 function AccountPage() {
     const [posts, setPosts] = useState([]);
@@ -17,6 +18,7 @@ function AccountPage() {
     const [bio, setBio] = useState("");
     const [verified, setVerified] = useState(false);
     const [guest, setGuest] = useState(false);
+    const [showEdit, setShowEdit] = useState(false);
     const auth = getAuth();
 
 
@@ -105,20 +107,36 @@ function AccountPage() {
         }
     }
 
+    const toggleEdit = (e) => {
+        e.preventDefault();
+        setShowEdit(!showEdit);
+        console.log(e.target)
+        if (!showEdit) {
+            e.target.innerText = "Done";
+        }
+        else {
+            e.target.innerText = "Edit profile";
+        }
+        
+    }
+
     return (
         <div className={styles.accountPageContainer}>
             <NavbarTop />
+            
             <div className={styles.accountPageHeader}>
                 <img src={avi} alt='avatar' />
                 <div className={styles.accountPageHeaderContent}>
                     <h1>@{username}</h1>
-                    {!guest ? <button>Edit profile</button> : <></>}
+                    {!guest ? <button onClick={toggleEdit}>Edit profile</button> : <></>}
                 </div>
             </div>
+            
             <div className={styles.accountPageBody}>
                 <h1>{displayName} {verified ? <span><img src={logo} alt='verified'/></span> : <></>} </h1>
                 <p>{bio}</p>
             </div>
+            {showEdit ? <EditPage username={username} displayName={displayName} avatar={avi} bio={bio} /> : <></>}
             <div className={styles.accountPagePosts}>
                 <h2>Posts</h2>
                 {posts.map((p) => {

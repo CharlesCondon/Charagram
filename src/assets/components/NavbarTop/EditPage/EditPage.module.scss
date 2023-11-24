@@ -1,0 +1,46 @@
+.editPageContainer {
+    position: relative;
+    bottom: 0;
+    max-width: 100%;
+    margin-bottom: 3.5rem;
+    background-color: var(--fg-color);
+    z-index: 10;
+    color: var(--bg-color);
+    padding: 20px;
+    animation-duration: .5s;
+}
+
+
+.editForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    input[type="submit"] {
+        background-color: var(--bg-color);
+        border: var(--border-color);
+        border-radius: 9999px;
+        padding: 5px 15px;
+    }
+}
+
+.editInput {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 10px;
+    align-items: center;
+    ::placeholder {
+        color: rgba(255,255,255,.25)
+    }
+    label {
+        width: 86px;
+    }
+    input {
+        background-color: rgba(0,0,0,.1);
+        border: none;
+        border-radius: 5px;
+        padding: 5px;
+        color: white;
+        flex: 1 1 auto;
+    }
+}

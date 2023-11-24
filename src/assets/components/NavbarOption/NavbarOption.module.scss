@@ -21,6 +21,9 @@
         &:hover {
             filter: invert(40%);
         }
+        &:active {
+            filter: invert(40%);
+        }
     }
     @include lg {
         img {
