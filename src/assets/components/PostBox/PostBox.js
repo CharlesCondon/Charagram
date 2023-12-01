@@ -37,7 +37,7 @@ function PostBox({avi, dName, username, verified}) {
             return;
         }
         else {
-            axios.post("http:13.58.222.53:5000", {text})
+            axios.post("https:13.58.222.53:5000", {text})
             .then((res) => {
                 setTextEval(res.data)
             })
