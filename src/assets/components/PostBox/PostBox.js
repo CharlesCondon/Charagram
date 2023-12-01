@@ -3,9 +3,14 @@ import styles from './PostBox.module.scss'
 import anon from '../../images/anon.png'
 import db from '../../../db/firebase'
 import { collection, addDoc } from "firebase/firestore/lite"; 
+import axios from 'axios';
+// import {NaturalLanguageUnderstandingV1} from 'ibm-watson/natural-language-understanding/v1';
+// import { IamAuthenticator } from 'ibm-watson/auth';
+// import { IamAuthenticator } from 'ibm-watson/auth';
 
 function PostBox({avi, dName, username, verified}) {
     const [text, setText] = useState("");
+    const [textEval, setTextEval] = useState("negative");
     if (!avi) {
         avi = anon
     }
@@ -32,23 +37,35 @@ function PostBox({avi, dName, username, verified}) {
             return;
         }
         else {
-            try {
-                async function docRef(db)  {
-                    await addDoc(collection(db,"posts"), {
-                        avatar: avi,
-                        displayName: `${dName}`,
-                        username: `${username}`,
-                        text: text,
-                        timestamp: new Date(),
-                        verified: verified
-                    })
+            axios.post("http:13.58.222.53:5000", {text})
+            .then((res) => {
+                setTextEval(res.data)
+            })
+            if (textEval === "negative") {
+                alert("Oh no looks like your post isn't postive")
+            }
+            else if (textEval === "neutral") {
+                alert("Oh no, it seems your post isn't positive enough to pass")
+            }
+            else {
+                try {
+                    async function docRef(db)  {
+                        await addDoc(collection(db,"posts"), {
+                            avatar: avi,
+                            displayName: `${dName}`,
+                            username: `${username}`,
+                            text: text,
+                            timestamp: new Date(),
+                            verified: verified
+                        })
+                    }
+                    docRef(db);
+                    console.log('post made')
+                    //window.location.reload(false);
+                    setText("");
+                } catch (e) {
+                    console.error("Error adding document: ", e);
                 }
-                docRef(db);
-                console.log('post made')
-                //window.location.reload(false);
-                setText("");
-            } catch (e) {
-                console.error("Error adding document: ", e);
             }
         }
     }

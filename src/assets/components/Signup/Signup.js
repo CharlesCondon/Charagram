@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import styles from './Signup.module.scss'
 import Footer from '../Footer/Footer'
 import db from '../../../db/firebase'
