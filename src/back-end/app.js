@@ -22,7 +22,7 @@ app.use(cors());
 
 app.post('/home', cors(), (req,res) => {
     //console.log('home hit')
-    console.log(req.body.text)
+    console.log(req.body)
     const analyzeParams = {
         'text': `${req.body.text}`,
         'features': {
