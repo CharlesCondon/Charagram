@@ -45,7 +45,8 @@ function PostBox({avi, dName, username, verified}) {
             //         'Content-Type': 'text/plain;charset=utf-8'
             //     }
             // })
-            axios.get("https://3.16.107.7:5000", {text})
+            // axios.get("https://3.16.107.7:5000", {text})
+            axios.post("https://3.19.204.186:5000/home", {text})
             .then((res) => {
                 setTextEval(res.data)
                 if (textEval === "negative") {
@@ -54,7 +55,7 @@ function PostBox({avi, dName, username, verified}) {
                 else if (textEval === "neutral") {
                     alert("Oh no, it seems your post isn't positive enough to pass")
                 }
-                else {
+                else if (textEval === "positive") {
                     alert("YAY")
                     // try {
                     //     async function docRef(db)  {
@@ -74,6 +75,9 @@ function PostBox({avi, dName, username, verified}) {
                     // } catch (e) {
                     //     console.error("Error adding document: ", e);
                     // }
+                }
+                else {
+                    alert(textEval)
                 }
             })
             .catch((error) => {
