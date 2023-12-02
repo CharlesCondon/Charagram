@@ -4,6 +4,8 @@ import anon from '../../images/anon.png'
 import db from '../../../db/firebase'
 import { collection, addDoc } from "firebase/firestore/lite"; 
 import axios from 'axios';
+const https = require('https');
+const httpsAgent = new https.Agent({ rejectUnauthorized: false })
 // import {NaturalLanguageUnderstandingV1} from 'ibm-watson/natural-language-understanding/v1';
 // import { IamAuthenticator } from 'ibm-watson/auth';
 // import { IamAuthenticator } from 'ibm-watson/auth';
@@ -46,7 +48,7 @@ function PostBox({avi, dName, username, verified}) {
             //     }
             // })
             // axios.get("https://3.16.107.7:5000", {text})
-            axios.post("https://3.19.204.186:443/home", {text})
+            axios.post("http://3.19.204.186:443/home", {text}, { httpsAgent: httpsAgent })
             .then((res) => {
                 setTextEval(res.data)
                 if (textEval === "negative") {
