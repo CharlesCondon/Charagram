@@ -21,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 app.post('/home', cors(), (req,res) => {
+    console.log('home hit')
     const analyzeParams = {
         'text': `${req.body.text}`,
         'features': {
