@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-app.post('https://charlesgram.vercel.app', (req,res) => {
+app.post('https://charlesgram.vercel.app', cors(), (req,res) => {
     const analyzeParams = {
         'text': `${req.body.text}`,
         'features': {
