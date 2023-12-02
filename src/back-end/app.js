@@ -22,7 +22,7 @@ app.use(cors());
 
 app.post('/home', cors(), (req,res) => {
     //console.log('home hit')
-    console.log(req.body.text)
+    //console.log(req.body.text)
     const analyzeParams = {
         'text': `${req.body.text}`,
         'features': {
@@ -33,7 +33,7 @@ app.post('/home', cors(), (req,res) => {
     };
     naturalLanguageUnderstanding.analyze(analyzeParams)
         .then(analysisResults => {
-            console.log(analysisResults)
+            //console.log(analysisResults)
             res.status(200).send(analysisResults.result.sentiment.document.label)
         })
         .catch(err => {
