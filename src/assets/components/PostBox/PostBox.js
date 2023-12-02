@@ -45,7 +45,7 @@ function PostBox({avi, dName, username, verified}) {
             //         'Content-Type': 'text/plain;charset=utf-8'
             //     }
             // })
-            axios.post("https://ec2-13-58-222-53.us-east-2.compute.amazonaws.com:5000", {text})
+            axios.post("https://13.58.222.53:5000", {text})
             .then((res) => {
                 setTextEval(res.data)
                 if (textEval === "negative") {
