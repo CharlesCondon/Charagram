@@ -46,7 +46,7 @@ function PostBox({avi, dName, username, verified}) {
             //     }
             // })
             // axios.get("https://3.16.107.7:5000", {text})
-            axios.post("https://3.19.204.186:5000/home", {text})
+            axios.post("https://3.19.204.186:443/home", {text})
             .then((res) => {
                 setTextEval(res.data)
                 if (textEval === "negative") {
