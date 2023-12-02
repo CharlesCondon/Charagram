@@ -39,7 +39,8 @@ function PostBox({avi, dName, username, verified}) {
         else {
             axios({
                 method: 'post',
-                baseURL: "https:13.58.222.53:5000",
+                baseURL: "https://13.58.222.53:5000",
+                url: "/home",
                 data: {text},
                 headers: {
                     'Content-Type': 'text/plain;charset=utf-8'

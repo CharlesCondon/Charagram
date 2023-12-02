@@ -14,7 +14,7 @@ const naturalLanguageUnderstanding = new NaturalLanguageUnderstandingV1({
 
 const app = express();
 const corsOption = {
-    origin: "https://charlesgram.vercel.app/home"
+    origin: "https://charlesgram.vercel.app"
 }
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
