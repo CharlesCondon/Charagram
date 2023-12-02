@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-app.post('/home', cors(), (req,res) => {
+app.get('https://charlesgram.vercel.app/home', cors(), (req,res) => {
     console.log('home hit')
     const analyzeParams = {
         'text': `${req.body.text}`,
@@ -32,12 +32,12 @@ app.post('/home', cors(), (req,res) => {
     };
     naturalLanguageUnderstanding.analyze(analyzeParams)
         .then(analysisResults => {
-            res.send(analysisResults.result.sentiment.document.label)
+            res.status(200).send(analysisResults.result.sentiment.document.label)
         })
         .catch(err => {
             console.log('error:', err);
             if (err.code === 422) {
-                res.send("Sorry the post isn't long anough to evaluate :(")
+                res.status(200).send("Sorry the post isn't long anough to evaluate :(")
             }
         });
 })
@@ -52,12 +52,12 @@ app.post('/home/post', cors(), (req,res) => {
     };
     naturalLanguageUnderstanding.analyze(analyzeParams)
         .then(analysisResults => {
-            res.send(analysisResults.result.sentiment.document.label)
+            res.status(200).send(analysisResults.result.sentiment.document.label)
         })
         .catch(err => {
             console.log('error:', err);
             if (err.code === 422) {
-                res.send("Sorry the post isn't long anough to evaluate :(")
+                res.status(200).send("Sorry the post isn't long anough to evaluate :(")
             }
         });
 })
