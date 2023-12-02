@@ -41,7 +41,7 @@ app.get('https://charlesgram.vercel.app/home', cors(), (req,res) => {
             }
         });
 })
-app.post('/home/post', cors(), (req,res) => {
+app.get('/home/post', cors(), (req,res) => {
     const analyzeParams = {
         'text': `${req.body.text}`,
         'features': {
