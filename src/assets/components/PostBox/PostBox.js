@@ -48,33 +48,38 @@ function PostBox({avi, dName, username, verified}) {
             // axios.post("https:13.58.222.53:5000", {text})
             .then((res) => {
                 setTextEval(res.data)
-            })
-            if (textEval === "negative") {
-                alert("Oh no looks like your post isn't postive")
-            }
-            else if (textEval === "neutral") {
-                alert("Oh no, it seems your post isn't positive enough to pass")
-            }
-            else {
-                try {
-                    async function docRef(db)  {
-                        await addDoc(collection(db,"posts"), {
-                            avatar: avi,
-                            displayName: `${dName}`,
-                            username: `${username}`,
-                            text: text,
-                            timestamp: new Date(),
-                            verified: verified
-                        })
-                    }
-                    docRef(db);
-                    console.log('post made')
-                    //window.location.reload(false);
-                    setText("");
-                } catch (e) {
-                    console.error("Error adding document: ", e);
+                if (textEval === "negative") {
+                    alert("Oh no looks like your post isn't postive")
                 }
-            }
+                else if (textEval === "neutral") {
+                    alert("Oh no, it seems your post isn't positive enough to pass")
+                }
+                else {
+                    alert("YAY")
+                    // try {
+                    //     async function docRef(db)  {
+                    //         await addDoc(collection(db,"posts"), {
+                    //             avatar: avi,
+                    //             displayName: `${dName}`,
+                    //             username: `${username}`,
+                    //             text: text,
+                    //             timestamp: new Date(),
+                    //             verified: verified
+                    //         })
+                    //     }
+                    //     docRef(db);
+                    //     console.log('post made')
+                    //     //window.location.reload(false);
+                    //     setText("");
+                    // } catch (e) {
+                    //     console.error("Error adding document: ", e);
+                    // }
+                }
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+            
         }
     }
 

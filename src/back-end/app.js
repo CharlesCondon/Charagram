@@ -13,12 +13,14 @@ const naturalLanguageUnderstanding = new NaturalLanguageUnderstandingV1({
 });
 
 const app = express();
-
+const corsOption = {
+    origin: "https://charlesgram.vercel.app/home"
+}
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-app.post('/home', cors(), (req,res) => {
+app.post('/home', cors(corsOption), (req,res) => {
     const analyzeParams = {
         'text': `${req.body.text}`,
         'features': {
